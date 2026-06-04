@@ -20,6 +20,16 @@ pipeline {
                 sh "npm install"
             }
         }
+       stage('Docker Test') {
+           steps {
+               sh '''
+                 whoami
+                 groups
+                 docker version
+                 docker ps
+                 '''
+    }
+}
         stage ("Build Docker Image") {
             steps {
                 sh "docker build -t zomato ."

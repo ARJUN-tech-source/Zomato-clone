@@ -30,11 +30,13 @@ pipeline {
                  '''
     }
 }
-        stage ("Build Docker Image") {
-            steps {
-                sh "docker build -t zomato ."
-            }
-        }
+       stage('Docker Scout Image') {
+    steps {
+        sh '''
+            docker scout quickview arjunling/zomato:latest
+        '''
+    }
+}
         stage ("Tag & Push to DockerHub") {
             steps {
                 script {
